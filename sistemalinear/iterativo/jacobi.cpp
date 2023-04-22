@@ -61,7 +61,7 @@ main(int argc,char **argv){
     double **m, v[4] = {0,0,0,0};
 
     m = lermatriz(argv[1]);
-    v = jacobi(m,v);
+    //v = jacobi(m,v);
     //por que raios esse v ta me estressando, tnc
     imprimir(m);
 }
