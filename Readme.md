@@ -1,10 +1,10 @@
-#Métodos Numéricos.
+# Métodos Numéricos.
 
-##Sistemas Lineares.
+## Sistemas Lineares.
 
 1. Métodos Exatos.
--Método de eliminação de Gauss.
+- Método de eliminação de Gauss.
 
 2. Métodos Iterativos.
--Método de Jacobi (em andamento).
--Método de Gauss-Seidel (em andamento).
+- Método de Jacobi (em andamento).
+- Método de Gauss-Seidel (em andamento).
