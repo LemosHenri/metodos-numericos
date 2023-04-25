@@ -1,6 +1,7 @@
 #include<iostream>
 #include<stdio.h>
 #include<stdlib.h>
+#include<math.h>
 #define MAX 10
 using namespace std;
 
@@ -35,27 +36,39 @@ void imprimir(double **m, int nl, int nc){
 
 }
 
-void jacobi(double **m,  double *v, int nl, int nc){
+double norma(double *x, double *y, int nl){
+    int i;
+    double norma, dx;
+
+    for(i=0;i<nl;i++){
+        dx = fabs(x[i]-y[i]);
+        if(dx>norma) norma = dx;
+    }
+
+    return norma;
+}
+
+double *jacobi(double **m,  double *v, int nl){
     int i,j;
     double *b;
 
     b = new double[nl];
 
-    for(i=0;i<nl;i++) b[i] = m[i][nc-1];
+    for(i=0;i<nl;i++) b[i] = m[i][nl]/m[i][i];
 
     for(i=0;i<nl;i++){
         for(j=0;j<nl;j++){
-            if(i!=j) b[i] -= (m[i][j]*v[j]); 
+            if(i!=j) b[i] -= (m[i][j]*v[j])/m[i][i]; 
         }
     }
 
-    for(i=0;i<nl;i++) v[i] = b[i]/m[i][i];
-
-    for(i=0;i<nl;i++) printf("%g\t",v[i]);
+    for(i=0;i<nl;i++) printf("%g\t",b[i]);
     puts("");
 
-    delete(b);
+    return b;
 }
+/*
+
 void gauss_seidel(double **m,double *v, int nl, int nc){
     int i,j;
     double *b;
@@ -76,15 +89,17 @@ void gauss_seidel(double **m,double *v, int nl, int nc){
 
     delete(b);
 }
+*/
 
 main(int argc,char **argv){
-    double **m, j[3] = {1,1,-1},s[3] = {1,1,-1};
+    double **m, *x1,x[3] = {1,1,-1},s[3] = {1,1,-1};
     int nl, nc, i;
 
     m = lermatriz(argv[1],&nl,&nc);
     //imprimir(m,nl,nc);
     //printf("---------------------------Jacobi-------------------------\n");
-    //for(i=0;i<MAX;i++) jacobi(m,j,nl,nc);
+    x1 = jacobi(m,x,nl);
+    for(i=0;i<nl;i++) printf("%g\t",x1[i]);
     
 
     //printf("\n\n---------------------------Gauss-Seidel-------------------------\n");
