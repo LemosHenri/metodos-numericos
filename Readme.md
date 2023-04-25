@@ -1,6 +1,6 @@
-#Métodos Numéricos
+#Métodos Numéricos.
 
-##Sistemas Lineares
+##Sistemas Lineares.
 
 1. Métodos Exatos.
 -Método de eliminação de Gauss.
