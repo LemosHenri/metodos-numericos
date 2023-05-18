@@ -2,60 +2,55 @@
 #include<stdlib.h>
 using namespace std;
 
-double **lerMatriz(char *v){
+double **lerMatriz(char *v, int *nl, int *nc){
     FILE *arq = fopen(v,"r");
-    int nl, nc,i,j;
+    int i,j;
     double **m;
 
-    fscanf(arq,"%d %d",&nl,&nc);
+    fscanf(arq,"%d %d",nl,nc);
 
     //alocação de memória com base no num de linha e coluna
-    *m = new double[nl];
-    for(i=0;i<nl;i++) m[i] = new double[nc];
+    m = (double **)malloc(*nl*sizeof(double*));
+    for(i=0;i<*nl;i++) m[i] = (double*)malloc(*nc*sizeof(double));
 
     //leitura dos elementos da matriz
-    for(i=0;i<nl;i++){
-        for(j=0;j<nc;j++){
-            fscanf(arq,"%lg",&m[i][j]);
-            printf("%lg\t",m[i][j]);
-        } 
-        puts("");
+    for(i=0;i<*nl;i++){
+        for(j=0;j<*nc;j++) fscanf(arq,"%lg",&m[i][j]);
     }
 
     fclose(arq);
     return m;
 }
 
-double **eliminacao(double **m, char *v){
-    FILE *arq = fopen(v,"r");
-    int nl, nc,i,j,k;
-    double p;
-    fscanf(arq,"%d %d",&nl,&nc);
-
-    for(k=0;k<(nc-1);k++){
-        for(i=k+1;i<nl;i++){
-            p = -(m[i][k]/m[k][k]);
-            for(j=0;j<nc;j++) m[i][j] += m[k][j]*p;
-        }
-    }
-
-    //imprimir matriz para verificação
+void imprimir_matriz(double **m, int nl, int nc){
     puts("");
-    for(i=0;i<nl;i++){
-        for(j=0;j<nc;j++) printf("%g\t", m[i][j]);
+    for(int i=0;i<nl;i++){
+        for(int j=0;j<nc;j++) cout << m[i][j] << "\t";
         puts("");
     }
+}
 
-    fclose(arq);
+void eli_gauss(double **m, int nl, int nc){
+    double p;
+
+    for(int k=0;k<nl-1;k++){
+        for(int i=k+1;i<nl;i++){
+            p = m[i][k]/m[k][k];
+            for(int j=0;j<nc;j++) m[i][j] -= m[k][j]*p; 
+        }
+    }
     
-    return m;
+    imprimir_matriz(m,nl,nc);
+     
 }
 
 main(int argc, char **argv){
-    FILE *arq;
+    int nl, nc;
     double **m;
 
-    m = lerMatriz(argv[1]);
-    m = eliminacao(m,argv[1]);
+    m = lerMatriz(argv[1],&nl,&nc);
+    imprimir_matriz(m,nl,nc);
+    eli_gauss(m, nl, nc);
+    //imprimir_matriz(m,nl,nc);
     
 }
