@@ -9,7 +9,7 @@
 ## Sistemas Lineares.
 1. Métodos Exatos.
 - Método de eliminação de Gauss.
-- Decomposição LU (Em andamento)
+- Decomposição LU (Em andamento).
 
 2. Métodos Iterativos.
 - Método de Jacobi.
