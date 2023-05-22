@@ -1,14 +1,12 @@
 CC=g++
 FLAGS=-lm
-DIM = 5
+DIM = 4
 
-all: main.cpp gerar_matriz.cpp
-	$(CC) -o trabalho main.cpp && ./trabalho matriz.dat
+all: gauss.cpp gerar_matriz.cpp
+	$(CC) -o gauss gauss.cpp && ./gauss matriz.dat
 
 att: gerar_matriz.cpp
 	$(CC) -o gerarmatriz gerar_matriz.cpp && ./gerarmatriz $(DIM) > matriz.dat
 
-
-
-clean: gerarmatriz trabalho
+clean: gerarmatriz gauss
 	rm -r trabalho gerarmatriz
