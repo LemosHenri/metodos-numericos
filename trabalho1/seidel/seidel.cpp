@@ -114,23 +114,23 @@ main(int argc, char **argv){
     //resolução pelo método iterativo: método de Gauss-Seidel
     
     m = lerMatriz(argv[1],&nl,&nc);
-    cout << "Verificação de convergência:\n||M||l = " << norma_lina(m,nl,nc) << "\n||M||s = " << norma_sassenfeld(m,nl,nc) << endl;
+    //cout << "Verificação de convergência:\n||M||l = " << norma_lina(m,nl,nc) << "\n||M||s = " << norma_sassenfeld(m,nl,nc) << endl;
     if(norma_lina(m,nl,nc) >= 1 || norma_sassenfeld(m,nl,nc) >=1){
-        cout << "Convergência não garantida\n\n" << endl;
+        //cout << "Convergência não garantida\n\n" << endl;
     }
     
     int i=0;
     double dx, j[nl] = {0,0,0,0};
     do{
-        cout << i << "\t";
-        imprimir_vetor(j,nl);
+        //cout << i << "\t";
+        //imprimir_vetor(j,nl);
         dx = seidel(m,j,nl,nc);
         i++;
     }while(dx > 1e-4);
 
-    cout << "\n\n------------------Método Seidel---------------" << endl;
-    cout << i << "\t";
-    imprimir_vetor(j,nl);
+    //cout << "\n\n------------------Método Seidel---------------" << endl;
+    //cout << i << "\t";
+    //imprimir_vetor(j,nl);
     
 }
 

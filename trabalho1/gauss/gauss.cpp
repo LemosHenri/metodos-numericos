@@ -57,7 +57,7 @@ double *eli_gauss(double **m, int nl, int nc){
             p = m[i][k]/m[k][k];
             for(int j=0;j<nc;j++) m[i][j] -= p*m[k][j];
         }
-        imprimir_matriz(m,nl,nc);
+        //imprimir_matriz(m,nl,nc);
     }
     return substituicao_retroativa(m,nl,nc);
      
@@ -70,7 +70,7 @@ main(int argc, char **argv){
     //resolução pelo método exato: eliminação de gauss
     double *gauss;
     m = lerMatriz(argv[1],&nl,&nc);
-    imprimir_matriz(m,nl,nc);
+    //imprimir_matriz(m,nl,nc);
 
     gauss = eli_gauss(m,nl,nc);
     imprimir_vetor(gauss,nl);

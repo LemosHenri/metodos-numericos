@@ -83,15 +83,15 @@ int main(int argc, char **argv) {
 
     int i=0;
     do{
-        cout << i << "\t";
-        imprimir_vetor(v,nl);
+        //cout << i << "\t";
+        //imprimir_vetor(v,nl);
         dx = relaxamento(m,v,nl,nc,1.8);
         i++;
     }while (dx > 1e-4);
 
-    cout << "\n\n------------------Método Relaxamento---------------" << endl;
-    cout << i << "\t";
-    imprimir_vetor(v,nl);
+    //cout << "\n\n------------------Método Relaxamento---------------" << endl;
+    //cout << i << "\t";
+    //imprimir_vetor(v,nl);
 
   return 0;
 }
