@@ -15,5 +15,3 @@
 - Método de Jacobi.
 - Método de Gauss-Seidel.
 - Método da Relaxação. (Em andamento)
-
-- $\sqrt{2} + \sin(x^2)$
